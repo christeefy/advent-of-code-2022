@@ -8,12 +8,12 @@ fn main() {
 
     println!(
         "Part1: {}\nPart2: {}",
-        compute_scores(PUZZLE_DATA.to_owned()),
-        compute_scores_clarified(PUZZLE_DATA.to_owned())
+        compute_scores(PUZZLE_DATA),
+        compute_scores_clarified(PUZZLE_DATA)
     );
 }
 
-pub fn compute_scores(data: String) -> u32 {
+pub fn compute_scores(data: &str) -> u32 {
     data.split('\n')
         .map(|s| {
             let (opponent, me) = s.split_once(' ').unwrap();
@@ -26,7 +26,7 @@ pub fn compute_scores(data: String) -> u32 {
         .sum()
 }
 
-pub fn compute_scores_clarified(data: String) -> u32 {
+pub fn compute_scores_clarified(data: &str) -> u32 {
     data.split('\n')
         .map(|s| {
             let (opponent, result) = s.split_once(' ').unwrap();
@@ -53,11 +53,11 @@ mod tests {
 
     #[test]
     fn test_compute_scores() {
-        assert_eq!(compute_scores(DATA.to_owned()), 15)
+        assert_eq!(compute_scores(DATA), 15)
     }
 
     #[test]
     fn test_compute_scores_clarified() {
-        assert_eq!(compute_scores_clarified(DATA.to_owned()), 12)
+        assert_eq!(compute_scores_clarified(DATA), 12)
     }
 }

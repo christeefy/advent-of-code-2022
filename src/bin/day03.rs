@@ -8,11 +8,11 @@ use std::hash::Hash;
 
 fn main() {
     const PUZZLE_DATA: &str = include_str!("day03/puzzle.txt");
-    println!("Part1: {}", part1(PUZZLE_DATA.to_owned()));
-    println!("Part2: {}", part2(PUZZLE_DATA.to_owned()));
+    println!("Part1: {}", part1(PUZZLE_DATA));
+    println!("Part2: {}", part2(PUZZLE_DATA));
 }
 
-fn part1(data: String) -> u32 {
+fn part1(data: &str) -> u32 {
     let priorities = get_priority_mapping();
 
     data.lines()
@@ -30,7 +30,7 @@ fn part1(data: String) -> u32 {
         .sum()
 }
 
-fn part2(data: String) -> u32 {
+fn part2(data: &str) -> u32 {
     let priorities = get_priority_mapping();
 
     data.lines()
@@ -84,11 +84,11 @@ mod tests {
 
     #[test]
     fn test_part1() {
-        assert_eq!(part1(DATA.to_owned()), 157);
+        assert_eq!(part1(DATA), 157);
     }
 
     #[test]
     fn test_part2() {
-        assert_eq!(part2(DATA.to_owned()), 70);
+        assert_eq!(part2(DATA), 70);
     }
 }
