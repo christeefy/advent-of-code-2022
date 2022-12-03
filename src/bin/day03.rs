@@ -3,8 +3,7 @@
 /// Created `get_common_item`,
 /// a highly-generic function that uses associated types and const generics.
 ///
-
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::hash::Hash;
 
 fn main() {
@@ -14,6 +13,8 @@ fn main() {
 }
 
 fn part1(data: String) -> u32 {
+    let priorities = get_priority_mapping();
+
     data.lines()
         .map(|s| {
             let len = s.len();
@@ -25,11 +26,13 @@ fn part1(data: String) -> u32 {
             let iterators = [s[..mid].chars(), s[mid..].chars()];
             get_common_item(iterators).into_iter().next().unwrap()
         })
-        .map(get_priority)
+        .map(|c| priorities.get(&c).unwrap())
         .sum()
 }
 
 fn part2(data: String) -> u32 {
+    let priorities = get_priority_mapping();
+
     data.lines()
         .array_chunks()
         .map(|[x, y, z]| {
@@ -38,7 +41,7 @@ fn part2(data: String) -> u32 {
                 .next()
                 .unwrap()
         })
-        .map(get_priority)
+        .map(|c| priorities.get(&c).unwrap())
         .sum()
 }
 
@@ -59,14 +62,12 @@ where
         .collect()
 }
 
-fn get_priority(c: char) -> u32 {
-    const UPPERCASE_A_ORDINAL: u32 = 'A' as u32;
-    const LOWERCASE_A_ORDINAL: u32 = 'a' as u32;
-
-    match c.is_uppercase() {
-        true => c as u32 - UPPERCASE_A_ORDINAL + 27,
-        false => c as u32 - LOWERCASE_A_ORDINAL + 1,
-    }
+fn get_priority_mapping() -> HashMap<char, u32> {
+    ('a'..='z')
+        .chain('A'..='Z')
+        .enumerate()
+        .map(|(idx, c)| (c, idx as u32))
+        .collect()
 }
 
 #[cfg(test)]
