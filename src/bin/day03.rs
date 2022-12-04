@@ -66,7 +66,7 @@ fn get_priority_mapping() -> HashMap<char, u32> {
     ('a'..='z')
         .chain('A'..='Z')
         .enumerate()
-        .map(|(idx, c)| (c, idx as u32))
+        .map(|(idx, c)| (c, (idx + 1) as u32))
         .collect()
 }
 
