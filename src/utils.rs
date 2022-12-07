@@ -15,3 +15,14 @@ pub fn read_from_stdin() -> String {
     std::io::stdin().read_line(&mut user_input).unwrap();
     user_input
 }
+
+pub fn transpose<T: Clone>(records: Vec<Vec<T>>) -> Vec<Vec<T>> {
+    let mut transposed = vec![Vec::new(); records.iter().map(|record| record.len()).max().unwrap()];
+
+    for record in records {
+        for (index, element) in record.iter().enumerate() {
+            transposed[index].push(element.clone());
+        }
+    }
+    transposed
+}
