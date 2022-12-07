@@ -1,5 +1,4 @@
-use std::cmp::Ordering;
-use std::str::FromStr;
+use std::{cmp::Ordering, str::FromStr};
 
 use advent_of_code_2022::rock_paper_scissors::RockPaperScissors;
 
