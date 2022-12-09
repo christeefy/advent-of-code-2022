@@ -1,5 +1,4 @@
-use std::fs::File;
-use std::io::Read;
+use std::{fs::File, io::Read};
 
 pub fn read_file(path: String) -> String {
     let mut file = File::open(&path).unwrap_or_else(|_| panic!("Fail to load file at {path}"));

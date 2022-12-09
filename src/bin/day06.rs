@@ -14,8 +14,7 @@ fn part2(data: &str) -> usize {
 }
 
 fn find_longest_unique_idx(data: &str, seq_len: usize) -> usize {
-    data
-        .as_bytes()
+    data.as_bytes()
         .windows(seq_len)
         .enumerate()
         .find_map(|(i, arr)| {
@@ -24,7 +23,8 @@ fn find_longest_unique_idx(data: &str, seq_len: usize) -> usize {
             } else {
                 None
             }
-        }).unwrap()
+        })
+        .unwrap()
 }
 
 #[cfg(test)]

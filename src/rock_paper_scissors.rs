@@ -1,6 +1,4 @@
-use std::cmp::Ordering;
-use std::str::FromStr;
-use std::string::ParseError;
+use std::{cmp::Ordering, str::FromStr, string::ParseError};
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum RockPaperScissors {

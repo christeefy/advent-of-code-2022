@@ -4,8 +4,7 @@ use std::collections::HashMap;
 use nom::{
     branch::alt,
     bytes::complete::tag,
-    character::complete::{self, one_of},
-    character::complete::{char, newline, space0, space1},
+    character::complete::{self, char, newline, one_of, space0, space1},
     multi::{many1, separated_list1},
     sequence::{delimited, separated_pair, terminated},
     IResult,
