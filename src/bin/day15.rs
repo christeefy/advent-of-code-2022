@@ -50,7 +50,7 @@ fn part1(data: &str, target_row: i64) -> usize {
 fn part2(data: &str, u_bound: i64) -> i64 {
     let (_, sensors_and_beacons) = parse(data).unwrap();
 
-    let radar = Radar {
+    let _radar = Radar {
         data: sensors_and_beacons
             .clone()
             .into_iter()
@@ -123,7 +123,7 @@ fn within_manhattan(s: Position, b: Position, target_row: i64) -> Option<[i64; 2
 enum Item {
     Sensor,
     Beacon,
-    Beaconless,
+    // Beaconless,
 }
 
 impl Item {
@@ -131,7 +131,7 @@ impl Item {
         match self {
             Self::Sensor => 'S',
             Self::Beacon => 'B',
-            Self::Beaconless => '#',
+            // Self::Beaconless => '#',
         }
     }
 }

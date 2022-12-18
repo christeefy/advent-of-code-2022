@@ -2,11 +2,10 @@
 use std::collections::BTreeMap;
 
 use itertools::Itertools;
-use nom::bytes::complete::tag;
-use nom::character::complete;
-use nom::combinator::map;
-use nom::multi::separated_list1;
-use nom::{sequence::separated_pair, IResult};
+use nom::{
+    bytes::complete::tag, character::complete, combinator::map, multi::separated_list1,
+    sequence::separated_pair, IResult,
+};
 
 fn main() {
     const PUZZLE_DATA: &str = include_str!("day14/puzzle.txt");
@@ -207,11 +206,5 @@ mod tests {
     #[test]
     fn test_part2() {
         assert_eq!(part2(DATA), 93);
-    }
-
-    #[test]
-    fn test_part2_puzzle() {
-        const PUZZLE_DATA: &str = include_str!("day14/puzzle.txt");
-        assert_eq!(part2(PUZZLE_DATA), 28594);
     }
 }
