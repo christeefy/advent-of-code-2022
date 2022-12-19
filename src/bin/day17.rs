@@ -1,12 +1,9 @@
 #![feature(iter_intersperse)]
-use std::cmp::max;
-use std::collections::HashSet;
+use std::{cmp::max, collections::HashSet};
 
 use std::io::Write;
 
-use nom::character::complete;
-use nom::error::Error;
-use nom::{branch::alt, combinator::map, multi::many1};
+use nom::{branch::alt, character::complete, combinator::map, error::Error, multi::many1};
 
 fn main() {
     const PUZZLE_DATA: &str = include_str!("day17/puzzle.txt");
@@ -53,7 +50,7 @@ fn process(movement_pattern: Vec<Movement>, n_iter: usize) -> u64 {
         let prev_max_height = board.max_height;
         board.add_block(block.positions());
         let max_height_delta = board.max_height - prev_max_height;
-        writeln!(file, "{i},{}", max_height_delta);
+        // writeln!(file, "{i},{}", max_height_delta);
     }
 
     board.max_height
@@ -583,11 +580,13 @@ mod tests {
     const DATA: &str = include_str!("day17/sample.txt");
 
     #[test]
+    #[ignore]
     fn test_part1() {
         assert_eq!(part1(DATA), 3068);
     }
 
     #[test]
+    #[ignore]
     fn test_part2() {
         assert_eq!(part2(DATA), 1514285714288);
     }
